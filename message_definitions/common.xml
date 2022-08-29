@@ -2655,6 +2655,78 @@
         <description>Under-temperature fault.</description>
       </entry>
     </enum>
+    <enum name="MAV_GENERATOR_STATUS_FLAG">
+      <description>Flags to report status/failure cases for a power generator (used in GENERATOR_STATUS). Note that FAULTS are conditions that cause the generator to fail. Warnings are conditions that require attention before the next use (they indicate the system is not operating properly).</description>
+      <entry value="1" name="MAV_GENERATOR_STATUS_FLAG_OFF">
+        <description>Generator is off.</description>
+      </entry>
+      <entry value="2" name="MAV_GENERATOR_STATUS_FLAG_READY">
+        <description>Generator is ready to start generating power.</description>
+      </entry>
+      <entry value="4" name="MAV_GENERATOR_STATUS_FLAG_GENERATING">
+        <description>Generator is generating power.</description>
+      </entry>
+      <entry value="8" name="MAV_GENERATOR_STATUS_FLAG_CHARGING">
+        <description>Generator is charging the batteries (generating enough power to charge and provide the load).</description>
+      </entry>
+      <entry value="16" name="MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER">
+        <description>Generator is operating at a reduced maximum power.</description>
+      </entry>
+      <entry value="32" name="MAV_GENERATOR_STATUS_FLAG_MAXPOWER">
+        <description>Generator is providing the maximum output.</description>
+      </entry>
+      <entry value="64" name="MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">
+        <description>Generator is near the maximum operating temperature, cooling is insufficient.</description>
+      </entry>
+      <entry value="128" name="MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">
+        <description>Generator hit the maximum operating temperature and shutdown.</description>
+      </entry>
+      <entry value="256" name="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">
+        <description>Power electronics are near the maximum operating temperature, cooling is insufficient.</description>
+      </entry>
+      <entry value="512" name="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">
+        <description>Power electronics hit the maximum operating temperature and shutdown.</description>
+      </entry>
+      <entry value="1024" name="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">
+        <description>Power electronics experienced a fault and shutdown.</description>
+      </entry>
+      <entry value="2048" name="MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">
+        <description>The power source supplying the generator failed e.g. mechanical generator stopped, tether is no longer providing power, solar cell is in shade, hydrogen reaction no longer happening.</description>
+      </entry>
+      <entry value="4096" name="MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">
+        <description>Generator controller having communication problems.</description>
+      </entry>
+      <entry value="8192" name="MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING">
+        <description>Power electronic or generator cooling system error.</description>
+      </entry>
+      <entry value="16384" name="MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">
+        <description>Generator controller power rail experienced a fault.</description>
+      </entry>
+      <entry value="32768" name="MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">
+        <description>Generator controller exceeded the overcurrent threshold and shutdown to prevent damage.</description>
+      </entry>
+      <entry value="65536" name="MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">
+        <description>Generator controller detected a high current going into the batteries and shutdown to prevent battery damage.</description>
+      </entry>
+      <entry value="131072" name="MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">
+        <description>Generator controller exceeded it's overvoltage threshold and shutdown to prevent it exceeding the voltage rating.</description>
+      </entry>
+      <entry value="262144" name="MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT">
+        <description>Batteries are under voltage (generator will not start).</description>
+      </entry>
+      <entry value="524288" name="MAV_GENERATOR_STATUS_FLAG_START_INHIBITED">
+        <description>Generator start is inhibited by e.g. a safety switch.</description>
+      </entry>
+      <entry value="1048576" name="MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED">
+        <description>Generator requires maintenance.</description>
+      </entry>
+      <entry value="2097152" name="MAV_GENERATOR_STATUS_FLAG_WARMING_UP">
+        <description>Generator is not ready to generate yet.</description>
+      </entry>
+      <entry value="4194304" name="MAV_GENERATOR_STATUS_FLAG_IDLE">
+        <description>Generator is idle.</description>
+      </entry>
+    </enum>
     <enum name="MAV_VTOL_STATE">
       <description>Enumeration of VTOL states</description>
       <entry value="0" name="MAV_VTOL_STATE_UNDEFINED">
@@ -4524,6 +4596,28 @@
       <field type="uint8_t" name="position_valid">Boolean indicating whether the position fields (x, y, z, q, type) contain valid target position information (valid: 1, invalid: 0). Default is 0 (invalid).</field>
     </message>
     <!-- MESSAGE IDs 180 - 229: Space for custom messages in individual projectname_messages.xml files -->
+    <message id="225" name="EFI_STATUS">
+      <description>EFI status output</description>
+      <field type="uint8_t" name="health">EFI health status</field>
+      <field type="float" name="ecu_index">ECU index</field>
+      <field type="float" name="rpm">RPM</field>
+      <field type="float" name="fuel_consumed" units="cm^3">Fuel consumed</field>
+      <field type="float" name="fuel_flow" units="cm^3/min">Fuel flow rate</field>
+      <field type="float" name="engine_load" units="%">Engine load</field>
+      <field type="float" name="throttle_position" units="%">Throttle position</field>
+      <field type="float" name="spark_dwell_time" units="ms">Spark dwell time</field>
+      <field type="float" name="barometric_pressure" units="kPa">Barometric pressure</field>
+      <field type="float" name="intake_manifold_pressure" units="kPa">Intake manifold pressure(</field>
+      <field type="float" name="intake_manifold_temperature" units="degC">Intake manifold temperature</field>
+      <field type="float" name="cylinder_head_temperature" units="degC">Cylinder head temperature</field>
+      <field type="float" name="ignition_timing" units="deg">Ignition timing (Crank angle degrees)</field>
+      <field type="float" name="injection_time" units="ms">Injection time</field>
+      <field type="float" name="exhaust_gas_temperature" units="degC">Exhaust gas temperature</field>
+      <field type="float" name="throttle_out" units="%">Output throttle</field>
+      <field type="float" name="pt_compensation">Pressure/temperature compensation</field>
+      <extensions/>
+      <field type="float" name="ignition_voltage" units="V">Supply voltage to EFI sparking system.  Zero in this value means "unknown", so if the supply voltage really is zero volts use 0.0001 instead.</field>
+    </message>
     <message id="230" name="ESTIMATOR_STATUS">
       <description>Estimator status message including flags, innovation test ratios and estimated accuracies. The flags message is an integer bitmask containing information on which EKF outputs are valid. See the ESTIMATOR_STATUS_FLAGS enum definition for further information. The innovation test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovation test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.</description>
       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</field>
@@ -5134,6 +5228,20 @@
       <field type="int32_t" name="time_remaining" units="s">Estimated remaining battery time. -1: field not provided.</field>
       <field type="uint16_t" default="0" name="cell_offset">The cell number of the first index in the 'voltages' array field. Using this field allows you to specify cell voltages for batteries with more than 16 cells.</field>
       <field type="uint16_t[16]" name="voltages" units="mV">Individual cell voltages. Batteries with more 16 cells can use the cell_offset field to specify the cell offset for the array specified in the current message . Index values above the valid cell count for this battery should have the UINT16_MAX value.</field>
+    </message>
+    <message id="373" name="GENERATOR_STATUS">
+      <description>Telemetry of power generation system. Alternator or mechanical generator.</description>
+      <field type="uint64_t" name="status" display="bitmask" enum="MAV_GENERATOR_STATUS_FLAG">Status flags.</field>
+      <field type="uint16_t" name="generator_speed" units="rpm">Speed of electrical generator or alternator. UINT16_MAX: field not provided.</field>
+      <field type="float" name="battery_current" units="A">Current into/out of battery. Positive for out. Negative for in. NaN: field not provided.</field>
+      <field type="float" name="load_current" units="A">Current going to the UAV. If battery current not available this is the DC current from the generator. Positive for out. Negative for in. NaN: field not provided</field>
+      <field type="float" name="power_generated" units="W">The power being generated. NaN: field not provided</field>
+      <field type="float" name="bus_voltage" units="V">Voltage of the bus seen at the generator, or battery bus if battery bus is controlled by generator and at a different voltage to main bus.</field>
+      <field type="int16_t" name="rectifier_temperature" units="degC">The temperature of the rectifier or power converter. INT16_MAX: field not provided.</field>
+      <field type="float" name="bat_current_setpoint" units="A">The target battery current. Positive for out. Negative for in. NaN: field not provided</field>
+      <field type="int16_t" name="generator_temperature" units="degC">The temperature of the mechanical motor, fuel cell core or generator. INT16_MAX: field not provided.</field>
+      <field type="uint32_t" name="runtime" units="s">Seconds this generator has run since it was rebooted. UINT32_MAX: field not provided.</field>
+      <field type="int32_t" name="time_until_maintenance" units="s">Seconds until this generator requires maintenance.  A negative value indicates maintenance is past-due. INT32_MAX: field not provided.</field>
     </message>
     <message id="380" name="TIME_ESTIMATE_TO_TARGET">
       <wip/>
