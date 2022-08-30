@@ -3425,6 +3425,9 @@
       <field type="int16_t" name="xmag">X Magnetic field (raw)</field>
       <field type="int16_t" name="ymag">Y Magnetic field (raw)</field>
       <field type="int16_t" name="zmag">Z Magnetic field (raw)</field>
+      <extensions/>
+      <field type="uint8_t" name="id" instance="true">Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)</field>
+      <field type="int16_t" name="temperature" units="cdegC">Temperature, 0: IMU does not provide temperature values. If the IMU is at 0C it must send 1 (0.01C).</field>
     </message>
     <message id="28" name="RAW_PRESSURE">
       <description>The RAW pressure readings for the typical setup of one absolute pressure and one differential pressure sensor. The sensor values should be the raw, UNSCALED ADC values.</description>
