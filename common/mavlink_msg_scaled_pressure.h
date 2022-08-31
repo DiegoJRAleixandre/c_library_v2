@@ -3,13 +3,13 @@
 
 #define MAVLINK_MSG_ID_SCALED_PRESSURE 29
 
-MAVPACKED(
+
 typedef struct __mavlink_scaled_pressure_t {
  uint32_t time_boot_ms; /*< [ms] Timestamp (time since system boot).*/
  float press_abs; /*< [hPa] Absolute pressure*/
  float press_diff; /*< [hPa] Differential pressure 1*/
  int16_t temperature; /*< [cdegC] Temperature*/
-}) mavlink_scaled_pressure_t;
+} mavlink_scaled_pressure_t;
 
 #define MAVLINK_MSG_ID_SCALED_PRESSURE_LEN 14
 #define MAVLINK_MSG_ID_SCALED_PRESSURE_MIN_LEN 14
@@ -194,7 +194,7 @@ static inline void mavlink_msg_scaled_pressure_send_struct(mavlink_channel_t cha
 
 #if MAVLINK_MSG_ID_SCALED_PRESSURE_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

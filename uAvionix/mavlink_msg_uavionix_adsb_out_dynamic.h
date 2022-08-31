@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_UAVIONIX_ADSB_OUT_DYNAMIC 10002
 
-MAVPACKED(
+
 typedef struct __mavlink_uavionix_adsb_out_dynamic_t {
  uint32_t utcTime; /*< [s] UTC time in seconds since GPS epoch (Jan 6, 1980). If unknown set to UINT32_MAX*/
  int32_t gpsLat; /*< [degE7] Latitude WGS84 (deg * 1E7). If unknown set to INT32_MAX*/
@@ -21,7 +21,7 @@ typedef struct __mavlink_uavionix_adsb_out_dynamic_t {
  uint8_t gpsFix; /*<  0-1: no fix, 2: 2D fix, 3: 3D fix, 4: DGPS, 5: RTK*/
  uint8_t numSats; /*<  Number of satellites visible. If unknown set to UINT8_MAX*/
  uint8_t emergencyStatus; /*<  Emergency status*/
-}) mavlink_uavionix_adsb_out_dynamic_t;
+} mavlink_uavionix_adsb_out_dynamic_t;
 
 #define MAVLINK_MSG_ID_UAVIONIX_ADSB_OUT_DYNAMIC_LEN 41
 #define MAVLINK_MSG_ID_UAVIONIX_ADSB_OUT_DYNAMIC_MIN_LEN 41
@@ -338,7 +338,7 @@ static inline void mavlink_msg_uavionix_adsb_out_dynamic_send_struct(mavlink_cha
 
 #if MAVLINK_MSG_ID_UAVIONIX_ADSB_OUT_DYNAMIC_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

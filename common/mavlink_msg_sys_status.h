@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SYS_STATUS 1
 
-MAVPACKED(
+
 typedef struct __mavlink_sys_status_t {
  uint32_t onboard_control_sensors_present; /*<  Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present.*/
  uint32_t onboard_control_sensors_enabled; /*<  Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled.*/
@@ -18,7 +18,7 @@ typedef struct __mavlink_sys_status_t {
  uint16_t errors_count3; /*<  Autopilot-specific errors*/
  uint16_t errors_count4; /*<  Autopilot-specific errors*/
  int8_t battery_remaining; /*< [%] Remaining battery energy, -1: autopilot estimate the remaining battery*/
-}) mavlink_sys_status_t;
+} mavlink_sys_status_t;
 
 #define MAVLINK_MSG_ID_SYS_STATUS_LEN 31
 #define MAVLINK_MSG_ID_SYS_STATUS_MIN_LEN 31
@@ -302,7 +302,7 @@ static inline void mavlink_msg_sys_status_send_struct(mavlink_channel_t chan, co
 
 #if MAVLINK_MSG_ID_SYS_STATUS_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

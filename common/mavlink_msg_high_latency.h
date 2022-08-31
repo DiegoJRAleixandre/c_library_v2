@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_HIGH_LATENCY 234
 
-MAVPACKED(
+
 typedef struct __mavlink_high_latency_t {
  uint32_t custom_mode; /*<  A bitfield for use for autopilot-specific flags.*/
  int32_t latitude; /*< [degE7] Latitude*/
@@ -29,7 +29,7 @@ typedef struct __mavlink_high_latency_t {
  int8_t temperature_air; /*< [degC] Air temperature (degrees C) from airspeed sensor*/
  uint8_t failsafe; /*<  failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GPS, bit3:GCS, bit4:fence)*/
  uint8_t wp_num; /*<  current waypoint number*/
-}) mavlink_high_latency_t;
+} mavlink_high_latency_t;
 
 #define MAVLINK_MSG_ID_HIGH_LATENCY_LEN 40
 #define MAVLINK_MSG_ID_HIGH_LATENCY_MIN_LEN 40
@@ -434,7 +434,7 @@ static inline void mavlink_msg_high_latency_send_struct(mavlink_channel_t chan, 
 
 #if MAVLINK_MSG_ID_HIGH_LATENCY_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

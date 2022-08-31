@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS 332
 
-MAVPACKED(
+
 typedef struct __mavlink_trajectory_representation_waypoints_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float pos_x[5]; /*< [m] X-coordinate of waypoint, set to NaN if not being used*/
@@ -18,7 +18,7 @@ typedef struct __mavlink_trajectory_representation_waypoints_t {
  float pos_yaw[5]; /*< [rad] Yaw angle, set to NaN if not being used*/
  float vel_yaw[5]; /*< [rad/s] Yaw rate, set to NaN if not being used*/
  uint8_t valid_points; /*<  Number of valid points (up-to 5 waypoints are possible)*/
-}) mavlink_trajectory_representation_waypoints_t;
+} mavlink_trajectory_representation_waypoints_t;
 
 #define MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_LEN 229
 #define MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_MIN_LEN 229
@@ -306,7 +306,7 @@ static inline void mavlink_msg_trajectory_representation_waypoints_send_struct(m
 
 #if MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

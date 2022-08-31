@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_VIBRATION 241
 
-MAVPACKED(
+
 typedef struct __mavlink_vibration_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float vibration_x; /*<  Vibration levels on X-axis*/
@@ -12,7 +12,7 @@ typedef struct __mavlink_vibration_t {
  uint32_t clipping_0; /*<  first accelerometer clipping count*/
  uint32_t clipping_1; /*<  second accelerometer clipping count*/
  uint32_t clipping_2; /*<  third accelerometer clipping count*/
-}) mavlink_vibration_t;
+} mavlink_vibration_t;
 
 #define MAVLINK_MSG_ID_VIBRATION_LEN 32
 #define MAVLINK_MSG_ID_VIBRATION_MIN_LEN 32
@@ -230,7 +230,7 @@ static inline void mavlink_msg_vibration_send_struct(mavlink_channel_t chan, con
 
 #if MAVLINK_MSG_ID_VIBRATION_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

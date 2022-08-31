@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_PID_TUNING 194
 
-MAVPACKED(
+
 typedef struct __mavlink_pid_tuning_t {
  float desired; /*< [deg/s] Desired rate.*/
  float achieved; /*< [deg/s] Achieved rate.*/
@@ -12,7 +12,7 @@ typedef struct __mavlink_pid_tuning_t {
  float I; /*<  I component.*/
  float D; /*<  D component.*/
  uint8_t axis; /*<  Axis.*/
-}) mavlink_pid_tuning_t;
+} mavlink_pid_tuning_t;
 
 #define MAVLINK_MSG_ID_PID_TUNING_LEN 25
 #define MAVLINK_MSG_ID_PID_TUNING_MIN_LEN 25
@@ -230,7 +230,7 @@ static inline void mavlink_msg_pid_tuning_send_struct(mavlink_channel_t chan, co
 
 #if MAVLINK_MSG_ID_PID_TUNING_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

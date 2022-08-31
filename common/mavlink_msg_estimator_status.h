@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_ESTIMATOR_STATUS 230
 
-MAVPACKED(
+
 typedef struct __mavlink_estimator_status_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float vel_ratio; /*<  Velocity innovation test ratio*/
@@ -15,7 +15,7 @@ typedef struct __mavlink_estimator_status_t {
  float pos_horiz_accuracy; /*< [m] Horizontal position 1-STD accuracy relative to the EKF local origin*/
  float pos_vert_accuracy; /*< [m] Vertical position 1-STD accuracy relative to the EKF local origin*/
  uint16_t flags; /*<  Bitmap indicating which EKF outputs are valid.*/
-}) mavlink_estimator_status_t;
+} mavlink_estimator_status_t;
 
 #define MAVLINK_MSG_ID_ESTIMATOR_STATUS_LEN 42
 #define MAVLINK_MSG_ID_ESTIMATOR_STATUS_MIN_LEN 42
@@ -266,7 +266,7 @@ static inline void mavlink_msg_estimator_status_send_struct(mavlink_channel_t ch
 
 #if MAVLINK_MSG_ID_ESTIMATOR_STATUS_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

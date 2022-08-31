@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_HEARTBEAT 0
 
-MAVPACKED(
+
 typedef struct __mavlink_heartbeat_t {
  uint32_t custom_mode; /*<  A bitfield for use for autopilot-specific flags*/
  uint8_t type; /*<  Type of the system (quadrotor, helicopter, etc.). Components use the same type as their associated system.*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_heartbeat_t {
  uint8_t base_mode; /*<  System mode bitmap.*/
  uint8_t system_status; /*<  System status flag.*/
  uint8_t mavlink_version; /*<  MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version*/
-}) mavlink_heartbeat_t;
+} mavlink_heartbeat_t;
 
 #define MAVLINK_MSG_ID_HEARTBEAT_LEN 9
 #define MAVLINK_MSG_ID_HEARTBEAT_MIN_LEN 9
@@ -215,7 +215,7 @@ static inline void mavlink_msg_heartbeat_send_struct(mavlink_channel_t chan, con
 
 #if MAVLINK_MSG_ID_HEARTBEAT_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

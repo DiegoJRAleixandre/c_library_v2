@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_LOGGING_DATA 266
 
-MAVPACKED(
+
 typedef struct __mavlink_logging_data_t {
  uint16_t sequence; /*<  sequence number (can wrap)*/
  uint8_t target_system; /*<  system ID of the target*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_logging_data_t {
  uint8_t length; /*< [bytes] data length*/
  uint8_t first_message_offset; /*< [bytes] offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to 255 if no start exists).*/
  uint8_t data[249]; /*<  logged data*/
-}) mavlink_logging_data_t;
+} mavlink_logging_data_t;
 
 #define MAVLINK_MSG_ID_LOGGING_DATA_LEN 255
 #define MAVLINK_MSG_ID_LOGGING_DATA_MIN_LEN 255
@@ -212,7 +212,7 @@ static inline void mavlink_msg_logging_data_send_struct(mavlink_channel_t chan, 
 
 #if MAVLINK_MSG_ID_LOGGING_DATA_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

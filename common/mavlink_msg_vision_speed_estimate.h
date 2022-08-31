@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_VISION_SPEED_ESTIMATE 103
 
-MAVPACKED(
+
 typedef struct __mavlink_vision_speed_estimate_t {
  uint64_t usec; /*< [us] Timestamp (UNIX time or time since system boot)*/
  float x; /*< [m/s] Global X speed*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_vision_speed_estimate_t {
  float z; /*< [m/s] Global Z speed*/
  float covariance[9]; /*<  Row-major representation of 3x3 linear velocity covariance matrix (states: vx, vy, vz; 1st three entries - 1st row, etc.). If unknown, assign NaN value to first element in the array.*/
  uint8_t reset_counter; /*<  Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.*/
-}) mavlink_vision_speed_estimate_t;
+} mavlink_vision_speed_estimate_t;
 
 #define MAVLINK_MSG_ID_VISION_SPEED_ESTIMATE_LEN 57
 #define MAVLINK_MSG_ID_VISION_SPEED_ESTIMATE_MIN_LEN 20
@@ -212,7 +212,7 @@ static inline void mavlink_msg_vision_speed_estimate_send_struct(mavlink_channel
 
 #if MAVLINK_MSG_ID_VISION_SPEED_ESTIMATE_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

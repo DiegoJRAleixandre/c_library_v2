@@ -3,13 +3,13 @@
 
 #define MAVLINK_MSG_ID_FENCE_STATUS 162
 
-MAVPACKED(
+
 typedef struct __mavlink_fence_status_t {
  uint32_t breach_time; /*< [ms] Time (since boot) of last breach.*/
  uint16_t breach_count; /*<  Number of fence breaches.*/
  uint8_t breach_status; /*<  Breach status (0 if currently inside fence, 1 if outside).*/
  uint8_t breach_type; /*<  Last breach type.*/
-}) mavlink_fence_status_t;
+} mavlink_fence_status_t;
 
 #define MAVLINK_MSG_ID_FENCE_STATUS_LEN 8
 #define MAVLINK_MSG_ID_FENCE_STATUS_MIN_LEN 8
@@ -194,7 +194,7 @@ static inline void mavlink_msg_fence_status_send_struct(mavlink_channel_t chan, 
 
 #if MAVLINK_MSG_ID_FENCE_STATUS_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_BATTERY_STATUS 147
 
-MAVPACKED(
+
 typedef struct __mavlink_battery_status_t {
  int32_t current_consumed; /*< [mAh] Consumed charge, -1: autopilot does not provide consumption estimate*/
  int32_t energy_consumed; /*< [hJ] Consumed energy, -1: autopilot does not provide energy consumption estimate*/
@@ -16,7 +16,7 @@ typedef struct __mavlink_battery_status_t {
  int8_t battery_remaining; /*< [%] Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.*/
  int32_t time_remaining; /*< [s] Remaining battery time, 0: autopilot does not provide remaining battery time estimate*/
  uint8_t charge_state; /*<  State for extent of discharge, provided by autopilot for warning or external reactions*/
-}) mavlink_battery_status_t;
+} mavlink_battery_status_t;
 
 #define MAVLINK_MSG_ID_BATTERY_STATUS_LEN 41
 #define MAVLINK_MSG_ID_BATTERY_STATUS_MIN_LEN 36
@@ -272,7 +272,7 @@ static inline void mavlink_msg_battery_status_send_struct(mavlink_channel_t chan
 
 #if MAVLINK_MSG_ID_BATTERY_STATUS_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

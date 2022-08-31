@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_VFR_HUD 74
 
-MAVPACKED(
+
 typedef struct __mavlink_vfr_hud_t {
  float airspeed; /*< [m/s] Current indicated airspeed (IAS).*/
  float groundspeed; /*< [m/s] Current ground speed.*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_vfr_hud_t {
  float climb; /*< [m/s] Current climb rate.*/
  int16_t heading; /*< [deg] Current heading in compass units (0-360, 0=north).*/
  uint16_t throttle; /*< [%] Current throttle setting (0 to 100).*/
-}) mavlink_vfr_hud_t;
+} mavlink_vfr_hud_t;
 
 #define MAVLINK_MSG_ID_VFR_HUD_LEN 20
 #define MAVLINK_MSG_ID_VFR_HUD_MIN_LEN 20
@@ -218,7 +218,7 @@ static inline void mavlink_msg_vfr_hud_send_struct(mavlink_channel_t chan, const
 
 #if MAVLINK_MSG_ID_VFR_HUD_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

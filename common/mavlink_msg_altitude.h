@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_ALTITUDE 141
 
-MAVPACKED(
+
 typedef struct __mavlink_altitude_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float altitude_monotonic; /*< [m] This altitude measure is initialized on system boot and monotonic (it is never reset, but represents the local altitude change). The only guarantee on this field is that it will never be reset and is consistent within a flight. The recommended value for this field is the uncorrected barometric altitude at boot time. This altitude will also drift and vary between flights.*/
@@ -12,7 +12,7 @@ typedef struct __mavlink_altitude_t {
  float altitude_relative; /*< [m] This is the altitude above the home position. It resets on each change of the current home position.*/
  float altitude_terrain; /*< [m] This is the altitude above terrain. It might be fed by a terrain database or an altimeter. Values smaller than -1000 should be interpreted as unknown.*/
  float bottom_clearance; /*< [m] This is not the altitude, but the clear space below the system according to the fused clearance estimate. It generally should max out at the maximum range of e.g. the laser altimeter. It is generally a moving target. A negative value indicates no measurement available.*/
-}) mavlink_altitude_t;
+} mavlink_altitude_t;
 
 #define MAVLINK_MSG_ID_ALTITUDE_LEN 32
 #define MAVLINK_MSG_ID_ALTITUDE_MIN_LEN 32
@@ -230,7 +230,7 @@ static inline void mavlink_msg_altitude_send_struct(mavlink_channel_t chan, cons
 
 #if MAVLINK_MSG_ID_ALTITUDE_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

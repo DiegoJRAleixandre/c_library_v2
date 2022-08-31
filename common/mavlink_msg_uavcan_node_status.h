@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_UAVCAN_NODE_STATUS 310
 
-MAVPACKED(
+
 typedef struct __mavlink_uavcan_node_status_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  uint32_t uptime_sec; /*< [s] Time since the start-up of the node.*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_uavcan_node_status_t {
  uint8_t health; /*<  Generalized node health status.*/
  uint8_t mode; /*<  Generalized operating mode.*/
  uint8_t sub_mode; /*<  Not used currently.*/
-}) mavlink_uavcan_node_status_t;
+} mavlink_uavcan_node_status_t;
 
 #define MAVLINK_MSG_ID_UAVCAN_NODE_STATUS_LEN 17
 #define MAVLINK_MSG_ID_UAVCAN_NODE_STATUS_MIN_LEN 17
@@ -218,7 +218,7 @@ static inline void mavlink_msg_uavcan_node_status_send_struct(mavlink_channel_t 
 
 #if MAVLINK_MSG_ID_UAVCAN_NODE_STATUS_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

@@ -3,14 +3,14 @@
 
 #define MAVLINK_MSG_ID_DEVICE_OP_READ_REPLY 11001
 
-MAVPACKED(
+
 typedef struct __mavlink_device_op_read_reply_t {
  uint32_t request_id; /*<  Request ID - copied from request.*/
  uint8_t result; /*<  0 for success, anything else is failure code.*/
  uint8_t regstart; /*<  Starting register.*/
  uint8_t count; /*<  Count of bytes read.*/
  uint8_t data[128]; /*<  Reply data.*/
-}) mavlink_device_op_read_reply_t;
+} mavlink_device_op_read_reply_t;
 
 #define MAVLINK_MSG_ID_DEVICE_OP_READ_REPLY_LEN 135
 #define MAVLINK_MSG_ID_DEVICE_OP_READ_REPLY_MIN_LEN 135
@@ -200,7 +200,7 @@ static inline void mavlink_msg_device_op_read_reply_send_struct(mavlink_channel_
 
 #if MAVLINK_MSG_ID_DEVICE_OP_READ_REPLY_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

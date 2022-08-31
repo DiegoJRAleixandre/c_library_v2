@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_COMMAND_INT 75
 
-MAVPACKED(
+
 typedef struct __mavlink_command_int_t {
  float param1; /*<  PARAM1, see MAV_CMD enum*/
  float param2; /*<  PARAM2, see MAV_CMD enum*/
@@ -18,7 +18,7 @@ typedef struct __mavlink_command_int_t {
  uint8_t frame; /*<  The coordinate system of the COMMAND.*/
  uint8_t current; /*<  false:0, true:1*/
  uint8_t autocontinue; /*<  autocontinue to next wp*/
-}) mavlink_command_int_t;
+} mavlink_command_int_t;
 
 #define MAVLINK_MSG_ID_COMMAND_INT_LEN 35
 #define MAVLINK_MSG_ID_COMMAND_INT_MIN_LEN 35
@@ -302,7 +302,7 @@ static inline void mavlink_msg_command_int_send_struct(mavlink_channel_t chan, c
 
 #if MAVLINK_MSG_ID_COMMAND_INT_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

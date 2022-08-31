@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_DEVICE_OP_READ 11000
 
-MAVPACKED(
+
 typedef struct __mavlink_device_op_read_t {
  uint32_t request_id; /*<  Request ID - copied to reply.*/
  uint8_t target_system; /*<  System ID.*/
@@ -14,7 +14,7 @@ typedef struct __mavlink_device_op_read_t {
  char busname[40]; /*<  Name of device on bus (for SPI).*/
  uint8_t regstart; /*<  First register to read.*/
  uint8_t count; /*<  Count of registers to read.*/
-}) mavlink_device_op_read_t;
+} mavlink_device_op_read_t;
 
 #define MAVLINK_MSG_ID_DEVICE_OP_READ_LEN 51
 #define MAVLINK_MSG_ID_DEVICE_OP_READ_MIN_LEN 51
@@ -248,7 +248,7 @@ static inline void mavlink_msg_device_op_read_send_struct(mavlink_channel_t chan
 
 #if MAVLINK_MSG_ID_DEVICE_OP_READ_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

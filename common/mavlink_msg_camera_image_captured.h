@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED 263
 
-MAVPACKED(
+
 typedef struct __mavlink_camera_image_captured_t {
  uint64_t time_utc; /*< [us] Timestamp (time since UNIX epoch) in UTC. 0 for unknown.*/
  uint32_t time_boot_ms; /*< [ms] Timestamp (time since system boot).*/
@@ -16,7 +16,7 @@ typedef struct __mavlink_camera_image_captured_t {
  uint8_t camera_id; /*<  Camera ID (1 for first, 2 for second, etc.)*/
  int8_t capture_result; /*<  Boolean indicating success (1) or failure (0) while capturing this image.*/
  char file_url[205]; /*<  URL of image taken. Either local storage or http://foo.jpg if camera provides an HTTP interface.*/
-}) mavlink_camera_image_captured_t;
+} mavlink_camera_image_captured_t;
 
 #define MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED_LEN 255
 #define MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED_MIN_LEN 255
@@ -273,7 +273,7 @@ static inline void mavlink_msg_camera_image_captured_send_struct(mavlink_channel
 
 #if MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

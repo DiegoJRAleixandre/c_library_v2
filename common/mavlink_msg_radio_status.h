@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_RADIO_STATUS 109
 
-MAVPACKED(
+
 typedef struct __mavlink_radio_status_t {
  uint16_t rxerrors; /*<  Count of radio packet receive errors (since boot).*/
  uint16_t fixed; /*<  Count of error corrected radio packets (since boot).*/
@@ -12,7 +12,7 @@ typedef struct __mavlink_radio_status_t {
  uint8_t txbuf; /*< [%] Remaining free transmitter buffer space.*/
  uint8_t noise; /*<  Local background noise level. These are device dependent RSSI values (scale as approx 2x dB on SiK radios). Values: [0-254], 255: invalid/unknown.*/
  uint8_t remnoise; /*<  Remote background noise level. These are device dependent RSSI values (scale as approx 2x dB on SiK radios). Values: [0-254], 255: invalid/unknown.*/
-}) mavlink_radio_status_t;
+} mavlink_radio_status_t;
 
 #define MAVLINK_MSG_ID_RADIO_STATUS_LEN 9
 #define MAVLINK_MSG_ID_RADIO_STATUS_MIN_LEN 9
@@ -230,7 +230,7 @@ static inline void mavlink_msg_radio_status_send_struct(mavlink_channel_t chan, 
 
 #if MAVLINK_MSG_ID_RADIO_STATUS_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

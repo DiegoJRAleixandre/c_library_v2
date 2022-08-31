@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_HIGH_LATENCY2 235
 
-MAVPACKED(
+
 typedef struct __mavlink_high_latency2_t {
  uint32_t timestamp; /*< [ms] Timestamp (milliseconds since boot or Unix epoch)*/
  int32_t latitude; /*< [degE7] Latitude*/
@@ -32,7 +32,7 @@ typedef struct __mavlink_high_latency2_t {
  int8_t custom0; /*<  Field for custom payload.*/
  int8_t custom1; /*<  Field for custom payload.*/
  int8_t custom2; /*<  Field for custom payload.*/
-}) mavlink_high_latency2_t;
+} mavlink_high_latency2_t;
 
 #define MAVLINK_MSG_ID_HIGH_LATENCY2_LEN 42
 #define MAVLINK_MSG_ID_HIGH_LATENCY2_MIN_LEN 42
@@ -470,7 +470,7 @@ static inline void mavlink_msg_high_latency2_send_struct(mavlink_channel_t chan,
 
 #if MAVLINK_MSG_ID_HIGH_LATENCY2_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

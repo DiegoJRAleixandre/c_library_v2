@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_OBSTACLE_DISTANCE 330
 
-MAVPACKED(
+
 typedef struct __mavlink_obstacle_distance_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  uint16_t distances[72]; /*< [cm] Distance of obstacles around the UAV with index 0 corresponding to local North. A value of 0 means that the obstacle is right in front of the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_obstacle_distance_t {
  uint16_t max_distance; /*< [cm] Maximum distance the sensor can measure.*/
  uint8_t sensor_type; /*<  Class id of the distance sensor type.*/
  uint8_t increment; /*< [deg] Angular width in degrees of each array element.*/
-}) mavlink_obstacle_distance_t;
+} mavlink_obstacle_distance_t;
 
 #define MAVLINK_MSG_ID_OBSTACLE_DISTANCE_LEN 158
 #define MAVLINK_MSG_ID_OBSTACLE_DISTANCE_MIN_LEN 158
@@ -212,7 +212,7 @@ static inline void mavlink_msg_obstacle_distance_send_struct(mavlink_channel_t c
 
 #if MAVLINK_MSG_ID_OBSTACLE_DISTANCE_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

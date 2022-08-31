@@ -3,14 +3,14 @@
 
 #define MAVLINK_MSG_ID_DEBUG_VECT 250
 
-MAVPACKED(
+
 typedef struct __mavlink_debug_vect_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float x; /*<  x*/
  float y; /*<  y*/
  float z; /*<  z*/
  char name[10]; /*<  Name*/
-}) mavlink_debug_vect_t;
+} mavlink_debug_vect_t;
 
 #define MAVLINK_MSG_ID_DEBUG_VECT_LEN 30
 #define MAVLINK_MSG_ID_DEBUG_VECT_MIN_LEN 30
@@ -200,7 +200,7 @@ static inline void mavlink_msg_debug_vect_send_struct(mavlink_channel_t chan, co
 
 #if MAVLINK_MSG_ID_DEBUG_VECT_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

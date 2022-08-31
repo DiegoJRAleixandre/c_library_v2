@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_WIND_COV 231
 
-MAVPACKED(
+
 typedef struct __mavlink_wind_cov_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float wind_x; /*< [m/s] Wind in X (NED) direction*/
@@ -14,7 +14,7 @@ typedef struct __mavlink_wind_cov_t {
  float wind_alt; /*< [m] Altitude (MSL) that this measurement was taken at*/
  float horiz_accuracy; /*< [m] Horizontal speed 1-STD accuracy*/
  float vert_accuracy; /*< [m] Vertical speed 1-STD accuracy*/
-}) mavlink_wind_cov_t;
+} mavlink_wind_cov_t;
 
 #define MAVLINK_MSG_ID_WIND_COV_LEN 40
 #define MAVLINK_MSG_ID_WIND_COV_MIN_LEN 40
@@ -254,7 +254,7 @@ static inline void mavlink_msg_wind_cov_send_struct(mavlink_channel_t chan, cons
 
 #if MAVLINK_MSG_ID_WIND_COV_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

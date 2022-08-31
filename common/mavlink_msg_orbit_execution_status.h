@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_ORBIT_EXECUTION_STATUS 360
 
-MAVPACKED(
+
 typedef struct __mavlink_orbit_execution_status_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float radius; /*< [m] Radius of the orbit circle. Positive values orbit clockwise, negative values orbit counter-clockwise.*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_orbit_execution_status_t {
  int32_t y; /*<  Y coordinate of center point.  Coordinate system depends on frame field: local = x position in meters * 1e4, global = latitude in degrees * 1e7.*/
  float z; /*< [m] Altitude of center point. Coordinate system depends on frame field.*/
  uint8_t frame; /*<  The coordinate system of the fields: x, y, z.*/
-}) mavlink_orbit_execution_status_t;
+} mavlink_orbit_execution_status_t;
 
 #define MAVLINK_MSG_ID_ORBIT_EXECUTION_STATUS_LEN 25
 #define MAVLINK_MSG_ID_ORBIT_EXECUTION_STATUS_MIN_LEN 25
@@ -218,7 +218,7 @@ static inline void mavlink_msg_orbit_execution_status_send_struct(mavlink_channe
 
 #if MAVLINK_MSG_ID_ORBIT_EXECUTION_STATUS_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

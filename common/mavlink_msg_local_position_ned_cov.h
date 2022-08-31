@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_LOCAL_POSITION_NED_COV 64
 
-MAVPACKED(
+
 typedef struct __mavlink_local_position_ned_cov_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float x; /*< [m] X Position*/
@@ -17,7 +17,7 @@ typedef struct __mavlink_local_position_ned_cov_t {
  float az; /*< [m/s/s] Z Acceleration*/
  float covariance[45]; /*<  Row-major representation of position, velocity and acceleration 9x9 cross-covariance matrix upper right triangle (states: x, y, z, vx, vy, vz, ax, ay, az; first nine entries are the first ROW, next eight entries are the second row, etc.). If unknown, assign NaN value to first element in the array.*/
  uint8_t estimator_type; /*<  Class id of the estimator this estimate originated from.*/
-}) mavlink_local_position_ned_cov_t;
+} mavlink_local_position_ned_cov_t;
 
 #define MAVLINK_MSG_ID_LOCAL_POSITION_NED_COV_LEN 225
 #define MAVLINK_MSG_ID_LOCAL_POSITION_NED_COV_MIN_LEN 225
@@ -284,7 +284,7 @@ static inline void mavlink_msg_local_position_ned_cov_send_struct(mavlink_channe
 
 #if MAVLINK_MSG_ID_LOCAL_POSITION_NED_COV_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

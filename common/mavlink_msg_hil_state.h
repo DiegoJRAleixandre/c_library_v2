@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_HIL_STATE 90
 
-MAVPACKED(
+
 typedef struct __mavlink_hil_state_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float roll; /*< [rad] Roll angle*/
@@ -21,7 +21,7 @@ typedef struct __mavlink_hil_state_t {
  int16_t xacc; /*< [mG] X acceleration*/
  int16_t yacc; /*< [mG] Y acceleration*/
  int16_t zacc; /*< [mG] Z acceleration*/
-}) mavlink_hil_state_t;
+} mavlink_hil_state_t;
 
 #define MAVLINK_MSG_ID_HIL_STATE_LEN 56
 #define MAVLINK_MSG_ID_HIL_STATE_MIN_LEN 56
@@ -338,7 +338,7 @@ static inline void mavlink_msg_hil_state_send_struct(mavlink_channel_t chan, con
 
 #if MAVLINK_MSG_ID_HIL_STATE_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

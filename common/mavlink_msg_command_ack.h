@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_COMMAND_ACK 77
 
-MAVPACKED(
+
 typedef struct __mavlink_command_ack_t {
  uint16_t command; /*<  Command ID (of acknowledged command).*/
  uint8_t result; /*<  Result of command.*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_command_ack_t {
  int32_t result_param2; /*<  WIP: Additional parameter of the result, example: which parameter of MAV_CMD_NAV_WAYPOINT caused it to be denied.*/
  uint8_t target_system; /*<  WIP: System which requested the command to be executed*/
  uint8_t target_component; /*<  WIP: Component which requested the command to be executed*/
-}) mavlink_command_ack_t;
+} mavlink_command_ack_t;
 
 #define MAVLINK_MSG_ID_COMMAND_ACK_LEN 10
 #define MAVLINK_MSG_ID_COMMAND_ACK_MIN_LEN 3
@@ -218,7 +218,7 @@ static inline void mavlink_msg_command_ack_send_struct(mavlink_channel_t chan, c
 
 #if MAVLINK_MSG_ID_COMMAND_ACK_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

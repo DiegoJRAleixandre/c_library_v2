@@ -3,11 +3,11 @@
 
 #define MAVLINK_MSG_ID_CAMERA_TRIGGER 112
 
-MAVPACKED(
+
 typedef struct __mavlink_camera_trigger_t {
  uint64_t time_usec; /*< [us] Timestamp for image frame (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  uint32_t seq; /*<  Image frame sequence*/
-}) mavlink_camera_trigger_t;
+} mavlink_camera_trigger_t;
 
 #define MAVLINK_MSG_ID_CAMERA_TRIGGER_LEN 12
 #define MAVLINK_MSG_ID_CAMERA_TRIGGER_MIN_LEN 12
@@ -170,7 +170,7 @@ static inline void mavlink_msg_camera_trigger_send_struct(mavlink_channel_t chan
 
 #if MAVLINK_MSG_ID_CAMERA_TRIGGER_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

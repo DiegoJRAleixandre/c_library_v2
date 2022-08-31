@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_STORAGE_INFORMATION 261
 
-MAVPACKED(
+
 typedef struct __mavlink_storage_information_t {
  uint32_t time_boot_ms; /*< [ms] Timestamp (time since system boot).*/
  float total_capacity; /*< [MiB] Total capacity.*/
@@ -14,7 +14,7 @@ typedef struct __mavlink_storage_information_t {
  uint8_t storage_id; /*<  Storage ID (1 for first, 2 for second, etc.)*/
  uint8_t storage_count; /*<  Number of storage devices*/
  uint8_t status; /*<  Status of storage (0 not available, 1 unformatted, 2 formatted)*/
-}) mavlink_storage_information_t;
+} mavlink_storage_information_t;
 
 #define MAVLINK_MSG_ID_STORAGE_INFORMATION_LEN 27
 #define MAVLINK_MSG_ID_STORAGE_INFORMATION_MIN_LEN 27
@@ -254,7 +254,7 @@ static inline void mavlink_msg_storage_information_send_struct(mavlink_channel_t
 
 #if MAVLINK_MSG_ID_STORAGE_INFORMATION_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

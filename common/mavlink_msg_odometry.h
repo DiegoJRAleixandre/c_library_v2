@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_ODOMETRY 331
 
-MAVPACKED(
+
 typedef struct __mavlink_odometry_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float x; /*< [m] X Position*/
@@ -21,7 +21,7 @@ typedef struct __mavlink_odometry_t {
  uint8_t frame_id; /*<  Coordinate frame of reference for the pose data.*/
  uint8_t child_frame_id; /*<  Coordinate frame of reference for the velocity in free space (twist) data.*/
  uint8_t reset_counter; /*<  Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.*/
-}) mavlink_odometry_t;
+} mavlink_odometry_t;
 
 #define MAVLINK_MSG_ID_ODOMETRY_LEN 231
 #define MAVLINK_MSG_ID_ODOMETRY_MIN_LEN 230
@@ -334,7 +334,7 @@ static inline void mavlink_msg_odometry_send_struct(mavlink_channel_t chan, cons
 
 #if MAVLINK_MSG_ID_ODOMETRY_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

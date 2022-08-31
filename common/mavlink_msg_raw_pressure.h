@@ -3,14 +3,14 @@
 
 #define MAVLINK_MSG_ID_RAW_PRESSURE 28
 
-MAVPACKED(
+
 typedef struct __mavlink_raw_pressure_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  int16_t press_abs; /*<  Absolute pressure (raw)*/
  int16_t press_diff1; /*<  Differential pressure 1 (raw, 0 if nonexistent)*/
  int16_t press_diff2; /*<  Differential pressure 2 (raw, 0 if nonexistent)*/
  int16_t temperature; /*<  Raw Temperature measurement (raw)*/
-}) mavlink_raw_pressure_t;
+} mavlink_raw_pressure_t;
 
 #define MAVLINK_MSG_ID_RAW_PRESSURE_LEN 16
 #define MAVLINK_MSG_ID_RAW_PRESSURE_MIN_LEN 16
@@ -206,7 +206,7 @@ static inline void mavlink_msg_raw_pressure_send_struct(mavlink_channel_t chan, 
 
 #if MAVLINK_MSG_ID_RAW_PRESSURE_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

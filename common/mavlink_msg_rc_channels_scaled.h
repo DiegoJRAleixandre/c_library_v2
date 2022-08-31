@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_RC_CHANNELS_SCALED 34
 
-MAVPACKED(
+
 typedef struct __mavlink_rc_channels_scaled_t {
  uint32_t time_boot_ms; /*< [ms] Timestamp (time since system boot).*/
  int16_t chan1_scaled; /*<  RC channel 1 value scaled.*/
@@ -16,7 +16,7 @@ typedef struct __mavlink_rc_channels_scaled_t {
  int16_t chan8_scaled; /*<  RC channel 8 value scaled.*/
  uint8_t port; /*<  Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.*/
  uint8_t rssi; /*<  Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.*/
-}) mavlink_rc_channels_scaled_t;
+} mavlink_rc_channels_scaled_t;
 
 #define MAVLINK_MSG_ID_RC_CHANNELS_SCALED_LEN 22
 #define MAVLINK_MSG_ID_RC_CHANNELS_SCALED_MIN_LEN 22
@@ -278,7 +278,7 @@ static inline void mavlink_msg_rc_channels_scaled_send_struct(mavlink_channel_t 
 
 #if MAVLINK_MSG_ID_RC_CHANNELS_SCALED_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

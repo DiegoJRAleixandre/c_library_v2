@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_HIGHRES_IMU 105
 
-MAVPACKED(
+
 typedef struct __mavlink_highres_imu_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float xacc; /*< [m/s/s] X acceleration*/
@@ -20,7 +20,7 @@ typedef struct __mavlink_highres_imu_t {
  float pressure_alt; /*<  Altitude calculated from pressure*/
  float temperature; /*< [degC] Temperature*/
  uint16_t fields_updated; /*<  Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature*/
-}) mavlink_highres_imu_t;
+} mavlink_highres_imu_t;
 
 #define MAVLINK_MSG_ID_HIGHRES_IMU_LEN 62
 #define MAVLINK_MSG_ID_HIGHRES_IMU_MIN_LEN 62
@@ -326,7 +326,7 @@ static inline void mavlink_msg_highres_imu_send_struct(mavlink_channel_t chan, c
 
 #if MAVLINK_MSG_ID_HIGHRES_IMU_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

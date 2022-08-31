@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_VICON_POSITION_ESTIMATE 104
 
-MAVPACKED(
+
 typedef struct __mavlink_vicon_position_estimate_t {
  uint64_t usec; /*< [us] Timestamp (UNIX time or time since system boot)*/
  float x; /*< [m] Global X position*/
@@ -13,7 +13,7 @@ typedef struct __mavlink_vicon_position_estimate_t {
  float pitch; /*< [rad] Pitch angle*/
  float yaw; /*< [rad] Yaw angle*/
  float covariance[21]; /*<  Row-major representation of 6x6 pose cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.*/
-}) mavlink_vicon_position_estimate_t;
+} mavlink_vicon_position_estimate_t;
 
 #define MAVLINK_MSG_ID_VICON_POSITION_ESTIMATE_LEN 116
 #define MAVLINK_MSG_ID_VICON_POSITION_ESTIMATE_MIN_LEN 32
@@ -236,7 +236,7 @@ static inline void mavlink_msg_vicon_position_estimate_send_struct(mavlink_chann
 
 #if MAVLINK_MSG_ID_VICON_POSITION_ESTIMATE_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

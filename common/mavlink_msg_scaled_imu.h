@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SCALED_IMU 26
 
-MAVPACKED(
+
 typedef struct __mavlink_scaled_imu_t {
  uint32_t time_boot_ms; /*< [ms] Timestamp (time since system boot).*/
  int16_t xacc; /*< [mG] X acceleration*/
@@ -15,7 +15,7 @@ typedef struct __mavlink_scaled_imu_t {
  int16_t xmag; /*< [mT] X Magnetic field*/
  int16_t ymag; /*< [mT] Y Magnetic field*/
  int16_t zmag; /*< [mT] Z Magnetic field*/
-}) mavlink_scaled_imu_t;
+} mavlink_scaled_imu_t;
 
 #define MAVLINK_MSG_ID_SCALED_IMU_LEN 22
 #define MAVLINK_MSG_ID_SCALED_IMU_MIN_LEN 22
@@ -266,7 +266,7 @@ static inline void mavlink_msg_scaled_imu_send_struct(mavlink_channel_t chan, co
 
 #if MAVLINK_MSG_ID_SCALED_IMU_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_ESC_TELEMETRY_5_TO_8 11031
 
-MAVPACKED(
+
 typedef struct __mavlink_esc_telemetry_5_to_8_t {
  uint16_t voltage[4]; /*< [cV] Voltage.*/
  uint16_t current[4]; /*< [cA] Current.*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_esc_telemetry_5_to_8_t {
  uint16_t rpm[4]; /*< [rpm] RPM (eRPM).*/
  uint16_t count[4]; /*<  count of telemetry packets received (wraps at 65535).*/
  uint8_t temperature[4]; /*< [degC] Temperature.*/
-}) mavlink_esc_telemetry_5_to_8_t;
+} mavlink_esc_telemetry_5_to_8_t;
 
 #define MAVLINK_MSG_ID_ESC_TELEMETRY_5_TO_8_LEN 44
 #define MAVLINK_MSG_ID_ESC_TELEMETRY_5_TO_8_MIN_LEN 44
@@ -223,7 +223,7 @@ static inline void mavlink_msg_esc_telemetry_5_to_8_send_struct(mavlink_channel_
 
 #if MAVLINK_MSG_ID_ESC_TELEMETRY_5_TO_8_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

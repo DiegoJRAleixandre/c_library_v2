@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION 269
 
-MAVPACKED(
+
 typedef struct __mavlink_video_stream_information_t {
  float framerate; /*< [Hz] Frames per second*/
  uint32_t bitrate; /*< [b/s] Bit rate in bits per second*/
@@ -13,7 +13,7 @@ typedef struct __mavlink_video_stream_information_t {
  uint8_t camera_id; /*<  Camera ID (1 for first, 2 for second, etc.)*/
  uint8_t status; /*<  Current status of video streaming (0: not running, 1: in progress)*/
  char uri[230]; /*<  Video stream URI*/
-}) mavlink_video_stream_information_t;
+} mavlink_video_stream_information_t;
 
 #define MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_LEN 246
 #define MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_MIN_LEN 246
@@ -236,7 +236,7 @@ static inline void mavlink_msg_video_stream_information_send_struct(mavlink_chan
 
 #if MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

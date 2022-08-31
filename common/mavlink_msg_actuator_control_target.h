@@ -3,12 +3,12 @@
 
 #define MAVLINK_MSG_ID_ACTUATOR_CONTROL_TARGET 140
 
-MAVPACKED(
+
 typedef struct __mavlink_actuator_control_target_t {
  uint64_t time_usec; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/
  float controls[8]; /*<  Actuator controls. Normed to -1..+1 where 0 is neutral position. Throttle for single rotation direction motors is 0..1, negative range for reverse direction. Standard mapping for attitude controls (group 0): (index 0-7): roll, pitch, yaw, throttle, flaps, spoilers, airbrakes, landing gear. Load a pass-through mixer to repurpose them as generic outputs.*/
  uint8_t group_mlx; /*<  Actuator group. The "_mlx" indicates this is a multi-instance message and a MAVLink parser should use this field to difference between instances.*/
-}) mavlink_actuator_control_target_t;
+} mavlink_actuator_control_target_t;
 
 #define MAVLINK_MSG_ID_ACTUATOR_CONTROL_TARGET_LEN 41
 #define MAVLINK_MSG_ID_ACTUATOR_CONTROL_TARGET_MIN_LEN 41
@@ -176,7 +176,7 @@ static inline void mavlink_msg_actuator_control_target_send_struct(mavlink_chann
 
 #if MAVLINK_MSG_ID_ACTUATOR_CONTROL_TARGET_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

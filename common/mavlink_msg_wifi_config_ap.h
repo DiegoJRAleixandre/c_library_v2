@@ -3,11 +3,11 @@
 
 #define MAVLINK_MSG_ID_WIFI_CONFIG_AP 299
 
-MAVPACKED(
+
 typedef struct __mavlink_wifi_config_ap_t {
  char ssid[32]; /*<  Name of Wi-Fi network (SSID). Leave it blank to leave it unchanged.*/
  char password[64]; /*<  Password. Leave it blank for an open AP.*/
-}) mavlink_wifi_config_ap_t;
+} mavlink_wifi_config_ap_t;
 
 #define MAVLINK_MSG_ID_WIFI_CONFIG_AP_LEN 96
 #define MAVLINK_MSG_ID_WIFI_CONFIG_AP_MIN_LEN 96
@@ -171,7 +171,7 @@ static inline void mavlink_msg_wifi_config_ap_send_struct(mavlink_channel_t chan
 
 #if MAVLINK_MSG_ID_WIFI_CONFIG_AP_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an
